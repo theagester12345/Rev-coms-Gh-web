@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // String Arrays for Regions,Districts and Suburbs
+    <string-array name="regions">
+        <item>Ashanti</item>
+        <item>Brong-Ahafo</item>
+        <item>Greater Accra</item>
+        <item>Central</item>
+        <item>Eastern</item>
+        <item>Northern</item>
+        <item>Western</item>
+        <item>Upper-East</item>
+        <item>Upper-West</item>
+        <item>Volta</item>
+
+
+    </string-array>
+
+//.............................................
+    // GREATER ACCRA
+    <string-array name="GA_districts">
+        <item>GA Central</item>
+        <item>Accra Metropolitan</item>
+        <item>Ashaiman Municipal</item>
+    </string-array>
+
+    <string-array name="GA_central_suburbs">
+        <item>Nungua</item>
+        <item>Teshie</item>
+    </string-array>
+
+    <string-array name="Accra_Metro_suburbs">
+        <item>Pokuase</item>
+        <item>Amasaman</item>
+    </string-array>
+
+    <string-array name="Ashiaman_Muni_suburbs">
+        <item>Lebanon</item>
+        <item>Community 22</item>
+    </string-array>
+//...........................................
+    //UPPER-WEST
+    <string-array name="UW_districts">
+        <item>Jirapa</item>
+        <item>Lambussie Karni</item>
+    </string-array>
+
+    <string-array name="jirapa_suburbs">
+        <item>issa</item>
+        <item>Funsi</item>
+    </string-array>
+
+    <string-array name="lambussie_karni_suburbs">
+        <item>Tumu</item>
+        <item>Gwollu</item>
+    </string-array>
+    //........................................
+    //UPPER-EAST
+    <string-array name="UE_districts">
+        <item>Bawku Municipal</item>
+        <item>Bolgatanga Municipal</item>
+    </string-array>
+
+    <string-array name="bawku_muni_suburbs">
+        <item>Tindonsobulugu</item>
+        <item>Tindonmolgo</item>
+    </string-array>
+
+    <string-array name="Bolga_muni_suburbs">
+        <item>Daporetindongo</item>
+        <item>Yarigabisi</item>
+    </string-array>
+//............................................
+    NORTHERN
+    <string-array name="N_districts">
+        <item>Bunkpurugu-Yunyoo</item>
+        <item>Central Gonja</item>
+    </string-array>
+
+    <string-array name="bunkp_yunyoo_suburbs">
+        <item>Bole</item>
+        <item>Buipe</item>
+    </string-array>
+    <string-array name="central_gonja_suburbs">
+        <item>Salaga</item>
+        <item>Karaga</item>
+    </string-array>
+
+    //..........................................
+    //ASHANTI
+    <string-array name="A_district">
+        <item>Adansi North</item>
+        <item>Afigya-Kwabre</item>
+    </string-array>
+    <string-array name="adansi_north_suburbs">
+        <item>Fomena</item>
+        <item>Kodie</item>
+    </string-array>
+
+    <string-array name="afigya_kwabre_suburbs">
+        <item>New Edubiase</item>
+        <item>Juaso</item>
+    </string-array>
+    //..........................................
+    //EASTERN
+    <string-array name="E_district">
+        <item>Akuapim South</item>
+        <item>Akuapim North</item>
+    </string-array>
+    <string-array name="akuapim_south_suburbs">
+        <item>Aburi</item>
+        <item>Akropong</item>
+    </string-array>
+    <string-array name="akuapim_north_suburbs">
+        <item>Kwabeng</item>
+        <item>Kibi</item>
+    </string-array>
+//...............................................
+    //WESTERN
+    <string-array name="W_district">
+        <item>Ahanta West</item>
+        <item>Aowin/Suaman</item>
+    </string-array>
+    <string-array name="ahanta_west_suburbs">
+        <item>Agono</item>
+        <item>Essam</item>
+    </string-array>
+    <string-array name="aowin_suburbs">
+        <item>Enchi</item>
+        <item>Shama</item>
+    </string-array>
+    //..........................................
+    //BRONG-AHAFO
+    <string-array name="BA_districts">
+        <item>Asunafo North Municipal</item>
+        <item>Asunafo South</item>
+    </string-array>
+    <string-array name="asunafo_north_muni_suburbs">
+        <item>Goaso</item>
+        <item>Kenyasi</item>
+    </string-array>
+    <string-array name="asunafo_south_suburbs">
+        <item>Kukurom</item>
+        <item>Jema</item>
+    </string-array>
+//...............................................
+    // CENTRAL
+    <string-array name="C_districts">
+        <item>Abura/Asebu/Kwamankese</item>
+        <item>Agona East</item>
+    </string-array>
+    <string-array name="abura_suburbs">
+        <item>Dunkwa</item>
+        <item>Swerdu</item>
+    </string-array>
+    <string-array name="agona_east_suburbs">
+        <item>Nsaba</item>
+        <item>Kasoa</item>
+    </string-array>
+    //...........................................
+    // VOLTA
+    <string-array name="V_districts">
+        <item>Adaklu</item>
+        <item>Afadjato South</item>
+    </string-array>
+    <string-array name="adaklu_suburbs">
+        <item>Kpetoe</item>
+        <item>Adaklu Waya</item>
+    </string-array>
+    <string-array name="afadjato_suburbs">
+        <item>Ve Golokwati</item>
+        <item>Hohoe</item>
+    </string-array>
+
+
+    //String Array for the National ID type
+    <string-array name="id_type">
+        <item>National Health Insurance</item>
+        <item>National Passport</item>
+        <item>Voter ID</item>
+        <item>Drivers Licence</item>
+    </string-array>
+
+    //String Array for Profile Type
+    <string-array name="profile_type">
+        <item>Bungalow</item>
+        <item>Apartment Block</item>
+        <item>Duplex</item>
+        <item>Villa</item>
+    </string-array>
+
+    //String Array for Preferred Pick up Day
+    <string-array name="pf_day">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+    //String Array for Preferred Pick up Time
+    <string-array name="pf_time">
+       <item>7am - 9am</item>
+        <item>10am - 12pm</item>
+        <item>2pm - 4pm</item>
+    </string-array>
+</resources>

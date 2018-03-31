@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#fcfcfc"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.digimasters.rev_colgh.MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+          >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Customer Name" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/c_name"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="textCapWords"
+                    android:background="@android:drawable/editbox_dropdown_light_frame" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="National ID" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/id_type"
+                    android:spinnerMode="dropdown"
+                    android:entries="@array/id_type"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/n_id"
+                    android:hint="ID Number..."
+                    android:layout_marginBottom="10dp"
+                    android:inputType="textCapWords"
+                    android:background="@android:drawable/editbox_dropdown_light_frame" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Date Of Birth" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dob"
+                    android:editable="false"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:textAlignment="center"
+                    android:hint="Open Dialog"
+                    android:longClickable="false"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="textCapWords"
+                    android:background="@android:drawable/editbox_dropdown_light_frame" />
+
+                <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:text="Ghana Post Code" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/GPC"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="textCapWords"
+                    android:background="@android:drawable/editbox_dropdown_light_frame" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Address" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/address"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="textCapWords"
+                    android:background="@android:drawable/editbox_dropdown_light_frame" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Region" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/region"
+                    android:entries="@array/regions"
+                    android:spinnerMode="dropdown"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="District/Metro" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/district"
+                    android:entries="@array/A_district"
+                    android:spinnerMode="dropdown"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Suburb" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/suburb"
+                    android:spinnerMode="dropdown"
+                    android:entries="@array/adansi_north_suburbs"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Profile Type" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"
+                    android:id="@+id/profile_type"
+                    android:entries="@array/profile_type"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/apt_store_no"
+                    android:layout_marginBottom="10dp"
+                    android:hint="Apt/Store Number..."
+                    android:inputType="textCapWords"
+                    android:background="@android:drawable/editbox_dropdown_light_frame"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Telephone" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Mmno"
+                    android:hint="Mobile Money ..."
+                    android:layout_marginBottom="3dp"
+                    android:inputType="number"
+                    android:background="@android:drawable/editbox_dropdown_light_frame" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tele2"
+                    android:hint="Telephone ..."
+                    android:layout_marginBottom="10dp"
+                    android:inputType="number"
+                    android:background="@android:drawable/editbox_dropdown_light_frame" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Email" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="text"
+                    android:id="@+id/email"
+                    android:background="@android:drawable/editbox_dropdown_light_frame" />
+
+
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Preferred Pick up Day" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pickup_day"
+                    android:entries="@array/pf_day"
+                    android:spinnerMode="dropdown"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Preferred Pick up Time" />
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"
+                    android:entries="@array/pf_time"
+                    android:id="@+id/pickup_time"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Comments" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:minLines="4"
+                    android:maxLines="10"
+                    android:scrollbars="vertical"
+                    android:gravity="top|left"
+                    android:id="@+id/comment"
+                    android:background="@android:drawable/editbox_dropdown_light_frame" />
+
+
+
+
+
+
+            </LinearLayout>
+
+
+            <Button
+
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="#fff"
+            android:id="@+id/next"
+            android:layout_gravity="right"
+            android:text="next" />
+
+
+        </LinearLayout>
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</ScrollView>
