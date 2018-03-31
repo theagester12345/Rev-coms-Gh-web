@@ -1,0 +1,114 @@
+#imgheader{
+	margin-top: 70px;
+}
+
+#login_imgheader{
+	margin-top: 5px;
+	margin-left: 30px;
+}
+
+/*Log in button*/
+#sign_btn{
+	background: #f2be02;
+
+}
+
+/*Progress bar */
+
+
+#error{
+	display: none;
+}
+ body{
+	 background: #e4e4e4;
+ }
+
+ /*Sidebar*/
+ #side-wrapper{
+	 z-index: 1;
+	 width: 250px;
+	 height: 100%;
+	 opacity: 1;
+	 background: #2C3E50;
+	 position:fixed;
+ }
+ 
+
+ /* Main page content*/
+ #main-content-wrapper{
+	 padding: 20px;
+	 margin-left:250px; 
+ }
+
+ .sidebar-nav{
+	 padding: 0;
+	 list-style: none;
+ }
+
+ .sidebar-nav li{
+	 text-indent: 40px;
+	 font-size: 20px;
+	 line-height: 60px;
+ }
+
+ .sidebar-nav li a{
+	 display: block;
+	 text-decoration:none;
+	 color: #D9D8D6;
+	 
+ }
+
+ .sidebar-nav li a:hover{
+	 background: #16A085;
+
+ }
+
+ .selected{
+	 background:  #242c32;
+ }
+
+ /*navbar for all pages*/
+ #navbar{
+
+	border-bottom: 5px solid #f2be02;
+	
+ }
+
+ #hr{
+	 background: #f2be02;
+ }
+
+ #spinner{
+	 display: none;
+ }
+ #signuperror{
+	 display: none;
+ }
+ #proccedbtn{
+	 display: none;
+ }
+
+ /*Login in progress bar*/
+ #p2{
+	 width: 100%;
+ }
+ #prgbar{
+	display: none;
+}
+.card-header{
+
+	background: #2C3E50;	
+}
+.accountinfo_section{
+	display: none;
+}
+
+#transaction_section{
+	display: none;
+}
+#customer_section{
+	display: none;
+}
+
+
+

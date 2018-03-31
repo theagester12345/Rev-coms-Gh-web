@@ -1,0 +1,62 @@
+<DOCTYPE html>
+	<html>
+	<head>
+		<title>RevCol Login</title>
+		<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!--Google material Design-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<!--BOOTSTRAP CDN-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA6SCAijwNkUl-OR3PsKIX-KlruyQTg8eg",
+    authDomain: "rev-col-gh.firebaseapp.com",
+    databaseURL: "https://rev-col-gh.firebaseio.com",
+    projectId: "rev-col-gh",
+    storageBucket: "rev-col-gh.appspot.com",
+    messagingSenderId: "326974307298"
+  };
+  firebase.initializeApp(config);
+</script>
+<link rel="stylesheet" href="css/style.css">
+<script  src="js/index.js"></script>
+	</head>
+	<div class="container-fluid progress mb-4 p-0" id="prgbar" style="height: 1px;">
+<div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+</div>
+	<body class="p-3 mb-2 bg-dark text-white" >
+	<div class="container-fluid" id="login_imgheader">
+		<img src="images/revcol_header.png" swidth="70" height="70">
+	</div>
+	<div class="container mt-5">
+		
+		<form class="w-50 mx-auto pt-5" method="post" id="loginform" >
+			<h3>Login to Rev-Col Gh Portal</h3>
+			<div class="form-group w-50">
+				<label for="email">Email address</label>
+				<input type="email" class="form-control form-control-sm " id="loginemail" placeholder="email" required>
+				<p id="test" ></p>
+			</div>
+			<div class="form-group w-50">
+				<label for="password">Password</label>
+				<input type="password" class="form-control form-control-sm" id="loginpassword" placeholder="password" required>
+			</div>
+			<button type="submit" class="btn btn-warning w-50  mt-3" id="sign_btn"  >Login</button>
+			<p class="mt-3 w-50" id="error">Error</p>
+
+
+		</form>
+		
+	</div>
+	</body>
+	</html>

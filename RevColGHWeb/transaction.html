@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--Cloud Spinner-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--BOOTSTRAP CDN-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA6SCAijwNkUl-OR3PsKIX-KlruyQTg8eg",
+    authDomain: "rev-col-gh.firebaseapp.com",
+    databaseURL: "https://rev-col-gh.firebaseio.com",
+    projectId: "rev-col-gh",
+    storageBucket: "rev-col-gh.appspot.com",
+    messagingSenderId: "326974307298"
+  };
+  firebase.initializeApp(config);
+</script>
+<link rel="stylesheet" href="css/style.css">
+<script  src="js/pages.js"></script>
+
+</head>
+<body>
+
+	
+<nav class="navbar sticky-top  navbar-light bg-light" id="navbar">
+		<!--Logo-->
+			<a href="#" class="navbar-brand ">
+					<img src="images/revcol_header.png" class="mb-0  d-inline-block align-middle" width="40" height="40" alt="revcol logo image">
+					<span class="mb-0 p-2 h4 align-middle" >REV-COL GH</span>
+				</a>
+				<!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbardropdown" aria-controls="navbardropdown" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					  </button>-->
+
+		<!--Nav Content-->
+	
+			</nav>
+
+			<!--Side Navigation Bar-->
+			<div id="wrapper">
+				<div id="side-wrapper">
+					<ul class="sidebar-nav">
+						<li><a href="overview.html">Overview</a></li>
+						<li><a href="transaction.html" class="selected">Transaction</a></li>
+						<li><a href="customer.html">Customers</a></li>
+						<li><a href="report.html">Report</a></li>
+						<li><a href="agent.html">Agents</a></li>
+						<li><a href="#">Help</a></li>
+						<hr>
+						<li><a href="#">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!--Main Page Content-->
+			<div id="main-content-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							
+								<div class="col-lg-4 col-lg-offset-4 mx-auto pt-5" id="spinner_transaction">
+									
+										<i class="fa fa-refresh fa-spin" style="font-size:250px;color:#f2be02"></i>
+									</div>
+									
+							<div class="card text-center " id="transaction_section">
+												
+								<div class="card-body ">
+									
+					
+									<div id="cardheader">
+											<h5 class="card-title mb-3">Customer Accounts</h5>
+											<hr id="hr">
+											<!--Search Bar-->
+											<div class="input-group mb-3">
+													<input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+													<div class="input-group-append">
+													  <button class="btn btn-outline-secondary" type="button">Search</button>
+													</div>
+												  </div>
+
+
+											<table class="table table-hover" id="transactiontable">
+													<thead class="thead-dark">
+													  <tr>
+														<th scope="col"></th>
+														<th scope="col">ID</th>
+														<th scope="col">Customer Name</th>
+														<th scope="col">Telephone</th>
+														<th scope="col">Status</th>
+													  </tr>
+													 
+													</thead>
+													
+													<tbody id="transactTb">
+													 
+													</tbody>
+												  </table>
+												  
+									</div>
+									
+
+									
+								</div>
+								
+								</div>
+
+								
+						
+
+						
+							</div>
+								
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+</body>
+</html>

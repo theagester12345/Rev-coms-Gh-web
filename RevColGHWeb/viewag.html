@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--Google material Design-->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<!--BOOTSTRAP CDN-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyA6SCAijwNkUl-OR3PsKIX-KlruyQTg8eg",
+    authDomain: "rev-col-gh.firebaseapp.com",
+    databaseURL: "https://rev-col-gh.firebaseio.com",
+    projectId: "rev-col-gh",
+    storageBucket: "rev-col-gh.appspot.com",
+    messagingSenderId: "326974307298"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<link rel="stylesheet" href="css/style.css">
+<script  src="js/pages.js"></script>
+
+</head>
+<body>
+
+	
+<nav class="navbar sticky-top  navbar-light bg-light" id="navbar">
+		<!--Logo-->
+			<a href="#" class="navbar-brand ">
+					<img src="images/revcol_header.png" class="mb-0  d-inline-block align-middle" width="40" height="40" alt="revcol logo image">
+					<span class="mb-0 p-2 h4 align-middle" >REV-COL GH</span>
+				</a>
+				<!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbardropdown" aria-controls="navbardropdown" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					  </button>-->
+
+		<!--Nav Content-->
+	
+			</nav>
+
+			<!--Side Navigation Bar-->
+			<div id="wrapper"  >
+				<div id="side-wrapper"  >
+					<ul class="sidebar-nav ">
+						<li><a href="overview.html" >Overview</a></li>
+						<li><a href="transaction.html" >Transaction</a></li>
+						<li><a href="customer.html">Customers</a></li>
+						<li><a href="report.html">Report</a></li>
+						<li><a href="agent.html" class="selected" >Agents</a></li>
+						<li><a href="help.html">Help</a></li>
+						<hr>
+						<li><a href="#" onclick="signout()" >Logout</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!--Main Page Content-->
+			<div id="main-content-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-12">
+							
+
+							<div class="card text-center " id="viewagsection">
+												
+										<div class="card-body ">
+											<!--Signing Up Spinner-->
+											<div id="spinner">
+													<div id="spin" class="mdl-spinner mdl-js-spinner is-active"></div>
+													<p id="signuperror">Error Message</p>
+													<button class="btn btn-primary" type="button" id="proccedbtn" >Procced</button>
+
+											</div>
+							
+											<div id="cardheader">
+
+													<h5 class="card-title">Field Agents Database</h5>
+													<hr id="hr">
+													<input type="text" class="form-control mt-4 mb-3" id="viewag_search"  placeholder="Search...">
+													<table class="table table-hover">
+															<thead class="thead-dark">
+															  <tr>
+																<th scope="col"></th>
+																<th scope="col">First</th>
+																<th scope="col">Last</th>
+																<th scope="col">email</th>
+																<th scope="col">City</th>
+																<th scope="col">Telephone</th>
+															  </tr>
+															</thead>
+															<tbody id="viewagTb">
+															  <tr>
+																<th scope="row"><input type="checkbox"></th>
+																<td>Mark</td>
+																<td>Simpson</td>
+																<td>c@gmail.com</td>
+																<td>Accra</td>
+																<td>050239999</td>
+
+															  </tr>
+															  <tr>
+																	<th scope="row"><input type="checkbox"></th>
+																<td>Jacob</td>
+																<td>Smith</td>
+																<td>g@gmail.com</td>
+																<td>Kumasi</td>
+																<td>0509003456</td>
+															  </tr>
+															  <tr>
+																	<th scope="row"><input type="checkbox"></th>
+																<td>Larry</td>
+																<td>Boateng</td>
+																<td>larry@gmail.com</td>
+																<td>Tema</td>
+																<td>0506789221</td>
+															  </tr>
+															  <tr>
+																	<th scope="row"><input type="checkbox"></th>
+																	<td>James</td>
+																	<td>Aidoo</td>
+																	<td>q@gmail.com</td>
+																	<td>Pokuase</td>
+																	<td>0501112434</td>
+																  </tr>
+																  <tr>
+																		<th scope="row"><input type="checkbox"></th>
+																		<td>Beatrice</td>
+																		<td>Agbemavi</td>
+																		<td>beatrice@gmail.com</td>
+																		<td>Tema</td>
+																		<td>0501906789</td>
+																		</tr>
+																		<tr>
+																			<th scope="row"><input type="checkbox"></th>
+																				<td>Abigail</td>
+																				<td>Adoyi</td>
+																				<td>abigail2121@gmail.com</td>
+																				<td>Accra</td>
+																				<td>0501903333</td>
+																				</tr>
+															</tbody>
+														  </table>
+														  
+											</div>
+											
+
+											
+										</div>
+										
+										</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+</body>
+</html>
