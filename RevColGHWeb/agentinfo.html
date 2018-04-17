@@ -26,7 +26,7 @@
   firebase.initializeApp(config);
 </script>
 <link rel="stylesheet" href="css/style.css">
-<script  src="js/pages.js"></script>
+<script  src="js/agentinfo.js"></script>
 
 </head>
 <body>
@@ -47,14 +47,14 @@
 			</nav>
 
 			<!--Side Navigation Bar-->
-			<div id="wrapper" >
+			<div id="wrapper">
 				<div id="side-wrapper">
-					<ul class="sidebar-nav ">
-						<li><a href="overview.html" >Overview</a></li>
+					<ul class="sidebar-nav">
+						<li><a href="overview.html">Overview</a></li>
 						<li><a href="transaction.html" >Transaction</a></li>
-						<li><a href="customer.html" class="selected">Customers</a></li>
+						<li><a href="customer.html" >Customers</a></li>
 						<li><a href="report.html">Report</a></li>
-						<li><a href="agent.html">Agents</a></li>
+						<li><a href="agent.html" class="selected" >Agents</a></li>
 						<li><a href="#">Help</a></li>
 						<hr>
 						<li><a href="#">Logout</a></li>
@@ -67,52 +67,97 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-								<div class="col-lg-4 col-lg-offset-4 mx-auto pt-5" id="spinner_transaction">
+								<div class="col-lg-4 col-lg-offset-4 mx-auto pt-5" id="spinner_agentinfo">
 									
-										<i class="fa fa-refresh fa-spin" style="font-size:250px;color:#f2be02"></i>
-									</div>
-									<div id="customer_section">
-											<h5 class="card-title mb-3">Customer Information </h5>
+									<i class="fa fa-refresh fa-spin" style="font-size:250px;color:#f2be02"></i>
+								</div>
+								<div class="hidden_section" id="viewag_section">
+								<h3 class="card-title mb-3"> Field Agent Information</h3>
 											<hr id="hr">
-										<!--Search Bar-->
-										<div class="input-group mb-3">
-											<input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-											<div class="input-group-append">
-												<button class="btn btn-outline-secondary" type="button">Search</button>
-											</div>
-											</div>
-									
-									
-							<div class="card text-center border-secondary " >
-											
-									
+
+								<!--First Card Layout-->			
+								<div class=" card text-left mb-5 p-3  " >
+												
+									<div class="card-body">
+										
+										
 					
 									<div id="cardheader">
-										<table class="table table-hover" id="customertable">
-													<thead class="thead-dark">
-													  <tr>
-														<th scope="col"></th>
-														<th scope="col">ID</th>
-														<th scope="col">Customer Name</th>
-														<th scope="col">Telephone</th>
-														<th scope="col">Region</th>
-													  </tr>
-													 
-													</thead>
-													
-													<tbody id="customerTb">
-													 
-													</tbody>
-												  </table>
+											<dl class="row">
+												<p>
+														<dt class="col-sm-3">Name</dt>
+														<dd class="col-sm-9" id="name">null</dd>
+												</p>
+												<p>
+														<dt class="col-sm-3">Email</dt>
+														<dd class="col-sm-9" id="email">null</dd>
+												</p>
+												<p>
+														<dt class="col-sm-3">Password</dt>
+														<dd class="col-sm-9"  ><a href="#" id="pass">View</a></dd>
+												</p>
+								
+												
+												
+												<p>
+														<dt class="col-sm-3">Telephone</dt>
+														<dd class="col-sm-9" id="tel">null</dd>
+												</p>
+														
 												  
 									</div>
-									
+										
+								</div>
+							</div>
+							
+							<!--End of first Card Layout-->
 
-									
-								
-								
+							<!--Second Card Layout-->
+							<div class=" card text-left mb-5 p-3  " >
+												
+									<div class="card-body">
+										
+										
+					
+									<div id="cardheader">
+											<dl class="row">
+												
+												
+												<p>
+														<dt class="col-sm-3">Region</dt>
+														<dd class="col-sm-9"id="region"> null</dd>
+												</p>
+												<p>
+														<dt class="col-sm-3">City</dt>
+														<dd class="col-sm-9" id="city">null</dd>
+												</p>
+												<p>
+														<dt class="col-sm-3">Address</dt>
+														<dd class="col-sm-9" id="address">null</dd>
+												</p>
+												
+												
+														
+												  
+									</div>
+										
 								</div>
-								</div>
+							</div>
+							<!--End of Second Card Layout-->
+
+							
+
+							<!-- Delete Card Layout-->
+							<div class="card" >
+									<div class="card-body">
+									  <h5 class="card-title">Delete Field Agent Information</h5>
+									  <p class="card-text">Delete Field Agent Information from Database. Information will be lost and unretrivable</p>
+									  <a href="#" class="btn btn-danger">Delete</a>
+									</div>
+								  </div>
+								  </div>
+							<!--End of delete Card Layout-->
+
 						</div>
 					</div>
 				</div>

@@ -4,7 +4,8 @@
 	<title></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<!--Cloud Spinner-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!--Google material Design-->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
@@ -71,85 +72,40 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							
+							          <div class="col-lg-4 col-lg-offset-4 mx-auto pt-5" id="spinner_viewag">
+											<i class="fa fa-refresh fa-spin" style="font-size:250px;color:#f2be02"></i>
+										</div>
 
-							<div class="card text-center " id="viewagsection">
-												
-										<div class="card-body ">
-											<!--Signing Up Spinner-->
-											<div id="spinner">
-													<div id="spin" class="mdl-spinner mdl-js-spinner is-active"></div>
-													<p id="signuperror">Error Message</p>
-													<button class="btn btn-primary" type="button" id="proccedbtn" >Procced</button>
+										<div class="hidden_section">
+										<h5 class="card-title">Field Agents Database</h5>
+										   <hr id="hr">
 
-											</div>
-							
+										<!--Search Bar-->
+										<div class="input-group mb-3">
+												<input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+												<div class="input-group-append">
+													<button class="btn btn-outline-secondary" type="button">Search</button>
+												</div>
+												</div>
+
+												<!--Card Layout-->
+							<div class="card text-center border-secondary" id="viewagsection">
+
 											<div id="cardheader">
 
-													<h5 class="card-title">Field Agents Database</h5>
-													<hr id="hr">
-													<input type="text" class="form-control mt-4 mb-3" id="viewag_search"  placeholder="Search...">
-													<table class="table table-hover">
+
+													<table class="table table-hover" id="viewag_table">
 															<thead class="thead-dark">
 															  <tr>
 																<th scope="col"></th>
-																<th scope="col">First</th>
-																<th scope="col">Last</th>
+																<th scope="col">Name</th>
 																<th scope="col">email</th>
 																<th scope="col">City</th>
 																<th scope="col">Telephone</th>
 															  </tr>
 															</thead>
 															<tbody id="viewagTb">
-															  <tr>
-																<th scope="row"><input type="checkbox"></th>
-																<td>Mark</td>
-																<td>Simpson</td>
-																<td>c@gmail.com</td>
-																<td>Accra</td>
-																<td>050239999</td>
-
-															  </tr>
-															  <tr>
-																	<th scope="row"><input type="checkbox"></th>
-																<td>Jacob</td>
-																<td>Smith</td>
-																<td>g@gmail.com</td>
-																<td>Kumasi</td>
-																<td>0509003456</td>
-															  </tr>
-															  <tr>
-																	<th scope="row"><input type="checkbox"></th>
-																<td>Larry</td>
-																<td>Boateng</td>
-																<td>larry@gmail.com</td>
-																<td>Tema</td>
-																<td>0506789221</td>
-															  </tr>
-															  <tr>
-																	<th scope="row"><input type="checkbox"></th>
-																	<td>James</td>
-																	<td>Aidoo</td>
-																	<td>q@gmail.com</td>
-																	<td>Pokuase</td>
-																	<td>0501112434</td>
-																  </tr>
-																  <tr>
-																		<th scope="row"><input type="checkbox"></th>
-																		<td>Beatrice</td>
-																		<td>Agbemavi</td>
-																		<td>beatrice@gmail.com</td>
-																		<td>Tema</td>
-																		<td>0501906789</td>
-																		</tr>
-																		<tr>
-																			<th scope="row"><input type="checkbox"></th>
-																				<td>Abigail</td>
-																				<td>Adoyi</td>
-																				<td>abigail2121@gmail.com</td>
-																				<td>Accra</td>
-																				<td>0501903333</td>
-																				</tr>
+															 
 															</tbody>
 														  </table>
 														  
@@ -158,6 +114,8 @@
 
 											
 										</div>
+										</div>
+										<!--End of Card Layout-->
 										
 										</div>
 						</div>

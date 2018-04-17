@@ -37,7 +37,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
   }
 };
 
-var tele = getUrlParameter("tel");
+var id = getUrlParameter("id");
 
 
 
@@ -45,17 +45,18 @@ var tele = getUrlParameter("tel");
 
 
 var customer_detail_ref = firebase.database().ref().child("Customer_Details");  // Reference to the Customer Details table 
-var queryon_customer_details = customer_detail_ref.orderByChild("Mobile_Money_No").equalTo(tele);  // Query on customer details table where telephone matches val
+var queryon_customer_details = customer_detail_ref.orderByChild("id").equalTo(id);  // Query on customer details table where telephone matches val
 
 queryon_customer_details.on("child_added",snap=>{
   var c_name= snap.child("Customer_Name").val();
   var mobile_money = snap.child("Mobile_Money_No").val();
+
    
   $("#c_name").text(c_name);  //Append the customer name to account info page
   $("#tel").text(mobile_money);       //Append the Telephone to account info page
 
 var transactionRef = firebase.database().ref().child("Transactions"); // Reference to the Transaction Table
-var queryon_transaction = transactionRef.orderByChild("Mobile_Money_No").equalTo(mobile_money);  // Query on Transaction Table 
+var queryon_transaction = transactionRef.orderByChild("id").equalTo(id);  // Query on Transaction Table 
  
 queryon_transaction.on("child_added",snap=>{
 
@@ -63,6 +64,7 @@ queryon_transaction.on("child_added",snap=>{
 
     var stat = snap.child("Status").val();
     var acc = snap.child("id").val();
+    
   
     $("#account_id").text(acc);
     var last_pay = snap.child("Last_pay_amount").val();
@@ -88,10 +90,21 @@ queryon_transaction.on("child_added",snap=>{
 
 
   $("#spinner_accountinfo").hide();   // hiding the spinner
-  $(".accountinfo_section").show();  // shwoing the account info page
+  $(".hidden_section").show();  // showing the account info page
 });  
   
+//On Payment History View button onclick
+$("#viewbtn").click(function(){
 
+  window.location="accountpayhistory.html?id="+id;
+});
+
+
+//on Account Summary generate report button onclick
+$("#gr_btn").click(function(){
+
+  window.location="accountmonth.html?id="+id;
+});
 
 
     });

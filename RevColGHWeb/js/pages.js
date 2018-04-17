@@ -156,9 +156,35 @@ agent_detailsRef.on("child_added",snap=>{
   var  city_= snap.child("city").val();
   var tele_ = snap.child("Telephone").val();
 
-  $("#viewagTb").append("<tr><th scope='row'><input type='checkbox'></th><td>"+first_name+"</td><td>"+last_name+"</td><td>"+email_+"</td><td>"+city_+"</td><td>"+tele_+"</td></tr>");
+  $("#viewagTb").append("<tr><th scope='row'><input type='checkbox'></th><td>"+first_name+" "+last_name+"</td><td>"+email_+"</td><td>"+city_+"</td><td>"+tele_+"</td></tr>");
 
-})
+  $("#spinner_viewag").hide();  //hide spinner on view agent database page
+  $(".hidden_section").show();  // Show main content on page
+
+});
+
+
+//Getting values from Agent table onclick
+$("#viewag_table").on('click','tr',function(e){
+  e.preventDefault();
+  
+
+
+  var $row = $(this).closest("tr"),       // Finds the closest row <tr> 
+  $tds = $row.find("td");             // Finds all children <td> elements
+$.each($tds, function(index) {               // Visits every single <td> element
+if (index==3){
+  var tel = $(this).text();
+
+window.location= "agentinfo.html?tel="+tel; // Redirect to account info page
+}
+     
+});
+
+
+});
+
+
 
 //Populating Transaction Table with Customer details
 var customer_detailsRef = firebase.database().ref().child("Customer_Details");
@@ -176,16 +202,18 @@ queryon_transaction_table.on("child_added",data=>{
   var id_ = data.child("id").val();
   var stats = data.child("Status").val();
   $("#transactTb").append("<tr><th scope='row'><input type='checkbox'></th><td>"+id_+"</td><td>"+customer_name+"</td><td>"+Telephone+"</td><td><span class='status'>"+stats+"</span></td></tr>");
-  $("#customerTb").append("<tr><th scope='row'><input type='checkbox'></th><td>"+id_+"</td><td>"+customer_name+"</td><td>"+region+"</td><td><span class='status'>"+stats+"</span></td></tr>");
+  $("#customerTb").append("<tr><th scope='row'><input type='checkbox'></th><td>"+id_+"</td><td>"+customer_name+"</td><td>"+Telephone+"</td><td><span class='status'>"+region+"</span></td></tr>");
   
   $("#spinner_transaction").hide();   // hiding the spinner 
-  $("#transaction_section").show();   // Showing page main content
+  $("#transaction_section").show();   // Showing page main content in transaction page
   $("#customer_section").show();      // Showing page content in customer page
 });
 
 });
 
-//Getting values from Transaction/Customer Account table onclick
+
+
+//Getting values from Transaction Account table onclick
 $("#transactiontable").on('click','tr',function(e){
     e.preventDefault();
     
@@ -194,10 +222,10 @@ $("#transactiontable").on('click','tr',function(e){
     var $row = $(this).closest("tr"),       // Finds the closest row <tr> 
     $tds = $row.find("td");             // Finds all children <td> elements
 $.each($tds, function(index) {               // Visits every single <td> element
-  if (index==2){
-    var tel = $(this).text();
+  if (index==0){
+    var u_id= $(this).text();
 
-window.location= "accountinfo.html?tel="+tel; // Redirect to account info page
+window.location= "accountinfo.html?id="+u_id; // Redirect to account info page
   }
        
 });
@@ -207,6 +235,31 @@ window.location= "accountinfo.html?tel="+tel; // Redirect to account info page
 
 
 
+//Getting values from the Customer table onclick
+$("#customertable").on('click','tr',function(e){
+  e.preventDefault();
+  
+
+
+  var $row = $(this).closest("tr"),       // Finds the closest row <tr> 
+  $tds = $row.find("td");             // Finds all children <td> elements
+$.each($tds, function(index) {               // Visits every single <td> element
+if (index==2){
+  var tel= $(this).text();
+
+window.location= "customerinfo.html?tel="+tel; // Redirect to Customer info page
+}
+     
+});
+
+
+});
+
+// Realtime Report button onClick
+$("#rt_btn").click(function(){
+
+  window.location="realtime.html";
+});
 
     });
   

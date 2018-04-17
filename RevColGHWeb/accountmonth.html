@@ -26,7 +26,7 @@
   firebase.initializeApp(config);
 </script>
 <link rel="stylesheet" href="css/style.css">
-<script  src="js/pages.js"></script>
+<script  src="js/accountmonth.js"></script>
 
 </head>
 <body>
@@ -47,12 +47,12 @@
 			</nav>
 
 			<!--Side Navigation Bar-->
-			<div id="wrapper" >
+			<div id="wrapper">
 				<div id="side-wrapper">
-					<ul class="sidebar-nav ">
-						<li><a href="overview.html" >Overview</a></li>
-						<li><a href="transaction.html" >Transaction</a></li>
-						<li><a href="customer.html" class="selected">Customers</a></li>
+					<ul class="sidebar-nav">
+						<li><a href="overview.html">Overview</a></li>
+						<li><a href="transaction.html" class="selected">Transaction</a></li>
+						<li><a href="customer.html" >Customers</a></li>
 						<li><a href="report.html">Report</a></li>
 						<li><a href="agent.html">Agents</a></li>
 						<li><a href="#">Help</a></li>
@@ -67,52 +67,25 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-								<div class="col-lg-4 col-lg-offset-4 mx-auto pt-5" id="spinner_transaction">
+								<div class="col-lg-4 col-lg-offset-4 mx-auto pt-5" id="spinner_accountinfo">
 									
-										<i class="fa fa-refresh fa-spin" style="font-size:250px;color:#f2be02"></i>
-									</div>
-									<div id="customer_section">
-											<h5 class="card-title mb-3">Customer Information </h5>
+									<i class="fa fa-refresh fa-spin" style="font-size:250px;color:#f2be02"></i>
+								</div>
+								<div class="hidden_section" >
+								<h3 class="card-title mb-3"> Account Summary</h3>
 											<hr id="hr">
-										<!--Search Bar-->
-										<div class="input-group mb-3">
-											<input type="text" class="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-											<div class="input-group-append">
-												<button class="btn btn-outline-secondary" type="button">Search</button>
-											</div>
-											</div>
-									
-									
-							<div class="card text-center border-secondary " >
-											
-									
-					
-									<div id="cardheader">
-										<table class="table table-hover" id="customertable">
-													<thead class="thead-dark">
-													  <tr>
-														<th scope="col"></th>
-														<th scope="col">ID</th>
-														<th scope="col">Customer Name</th>
-														<th scope="col">Telephone</th>
-														<th scope="col">Region</th>
-													  </tr>
-													 
-													</thead>
-													
-													<tbody id="customerTb">
-													 
-													</tbody>
-												  </table>
-												  
-									</div>
-									
 
-									
+								<!--First Card Layout-->
+								<div id="page">
+										
+								</div>			
 								
-								
-								</div>
-								</div>
+							
+							<!--End of first Card Layout-->
+
+								  </div>
+							
+
 						</div>
 					</div>
 				</div>
