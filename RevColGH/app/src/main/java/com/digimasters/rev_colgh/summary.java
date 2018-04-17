@@ -14,12 +14,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class summary extends AppCompatActivity {
     TextView GPC,Customer_name,address,region,email,date_ob,district,mobile_no,id_type,id_no,suburb,profile_type,profiletype_no,tele,pf_day,pf_time,comment;
     String  Ghana_pc ,customer_n,property_address,property_type,Region,Email,dob,District,MmNo;
     Button submit;
-    private DatabaseReference customer_details,transaction;
+    private DatabaseReference customer_details,transaction,payment_h;
     private DatabaseReference newpost;
 
     private ProgressDialog spinner;
@@ -35,6 +38,7 @@ public class summary extends AppCompatActivity {
         //Initializing the Database References
         customer_details= FirebaseDatabase.getInstance().getReference().child("Customer_Details");
         transaction = FirebaseDatabase.getInstance().getReference().child("Transactions");
+        payment_h= FirebaseDatabase.getInstance().getReference().child("Payment_History");
 
         //Initializing ProgressDialog
         spinner = new ProgressDialog(this,ProgressDialog.THEME_HOLO_LIGHT);
@@ -91,14 +95,18 @@ public class summary extends AppCompatActivity {
                 //Writing to Database
 
                 //Generating timestamp
-                String timeStamp = new SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date());
+                String timeStamp = new SimpleDateFormat("dd-MM-yyyy").format(new java.util.Date());
 
                 // Customer_details Branch
+                //Generating id
+                long currentid = System.currentTimeMillis();
+
                  newpost= customer_details.push();
                 newpost.child("Ghana_Post_Code").setValue(Ghana_pc);
+                newpost.child("id").setValue(Long.toString(currentid));
                 newpost.child("Reg_date").setValue(timeStamp);
                 newpost.child("Customer_Name").setValue(customer_n);
-                newpost.child("Nation_ID_Type").setValue(s.getExtras().getString("Nation_id_type"));
+                newpost.child("National_ID_Type").setValue(s.getExtras().getString("Nation_id_type"));
                 newpost.child("National_ID_No").setValue(s.getExtras().getString("Nation_id_no"));
                 newpost.child("Date_Of_Birth").setValue(dob);
                 newpost.child("Address").setValue(property_address);
@@ -117,10 +125,9 @@ public class summary extends AppCompatActivity {
                 newpost.child("Comments").setValue(s.getExtras().getString("Comment"));
 
                 //Transaction
-                //Generating id
-                long timestamp = System.currentTimeMillis();
+
                 newpost = transaction.push();
-                newpost.child("id").setValue(timestamp);
+                newpost.child("id").setValue(Long.toString(currentid));
                 newpost.child("Mobile_Money_No").setValue(MmNo);
                 newpost.child("Balance_in_account").setValue(0);
                 newpost.child("Total_amount_paid").setValue(0);
@@ -132,7 +139,34 @@ public class summary extends AppCompatActivity {
 
 
 
-                //
+                //Payment_history
+
+                //Getting 12 months from reg_date
+                //Getting Expiry Date - adding 336 days for one year
+                Calendar c=new GregorianCalendar();
+                c.add(Calendar.DATE, 336);
+                Date d=c.getTime();
+                final String reg_expiry_date = new SimpleDateFormat("MMMM-yyyy").format(d);
+
+
+                newpost = payment_h.push();
+                newpost.child("id").setValue(Long.toString(currentid));
+                newpost.child("reg_expiry_date").setValue(reg_expiry_date);
+                //DatabaseReference payment_details;
+
+                //for loop for the next 12 months
+                for (int i=0;i<=336;i+=28){
+
+                    Calendar calendar=new GregorianCalendar();
+                    calendar.add(Calendar.DATE, i);
+                    long month_timestamp = calendar.getTimeInMillis();
+                    Date date=calendar.getTime();
+                    final String pay_month_year = new SimpleDateFormat("MMMM-yyyy").format(date);
+                    newpost.child("monthly_details").child(pay_month_year).child("month_status").setValue("new");
+                    newpost.child("monthly_details").child(pay_month_year).child("month_timestamp").setValue(month_timestamp);
+                    newpost.child("monthly_details").child(pay_month_year).child("Total_month_pay").setValue(0.00);
+                }
+
 
 
                 spinner.dismiss();

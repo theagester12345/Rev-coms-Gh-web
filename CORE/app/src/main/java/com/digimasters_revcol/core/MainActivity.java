@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     ArrayList<String> sms_list = new ArrayList<String>();
     ListView sms_listview;
     ArrayAdapter arrayadpt;
-    DatabaseReference transaction_table;
+    DatabaseReference transaction_table, payment_histroty_table,T_report_table ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +40,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
 
 
-        //Referencing the transaction table
+        //Referencing the transaction table, payment_history and T_report table
         transaction_table = FirebaseDatabase.getInstance().getReference().child("Transactions");
+        payment_histroty_table = FirebaseDatabase.getInstance().getReference().child("Payment_History");
+        T_report_table = FirebaseDatabase.getInstance().getReference().child("T_Report");
+
+
 
         //Handling the Sms list View
         sms_listview = (ListView) findViewById(R.id.smslist);
@@ -115,12 +119,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
 
             }
-            test.setText(sms_data[index+1]);
+          test.setText(sms_data[index+1]);
+
             String pay_from_sms = sms_data[5];
             final double final_pay_from_sms = Double.parseDouble(pay_from_sms);
 
             //Getting date of transaction
-            final String pay_date = new SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date());
+            final String pay_date = new SimpleDateFormat("dd-MM-yyyy").format(new java.util.Date());  //date of payment
+            final String pay_month_year = new SimpleDateFormat("MMMM-yyyy").format(new java.util.Date());   // month-year date
+            final String pay_year = new SimpleDateFormat("yyyy").format(new java.util.Date());     //year of payment
+
+
 
             //Getting Expiry Date - adding 30 days
             Calendar c=new GregorianCalendar();
@@ -131,6 +140,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
 
+            //Transaction Table
+            //Accounting
             Query queryon_transaction_table = transaction_table.orderByChild("Ref").equalTo(sms_data[index+1]);
             queryon_transaction_table.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -149,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                             String ed = transaction.child("Expiry_date").getValue(String.class);
                             double bal = transaction.child("Balance_in_account").getValue(double.class);
                             double total_amount_paid = transaction.child("Total_amount_paid").getValue(double.class);
-                            test.setText(lpd);
+                            //test.setText(lpd);
                             String status="Active";
                             //
                             HashMap<String,Object> result = new HashMap<>();
@@ -157,6 +168,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                             //Scenario
                             //Accounting
+
+                            //Section at other paye periods not first pay
                             if (!TextUtils.equals("n/a",lpd) && !TextUtils.equals("n/a",ed) ) {
                                 double total_accu3 = total_amount_paid + final_pay_from_sms;
                                 result.put("Last_pay_amount",final_pay_from_sms);
@@ -168,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 result.put("Total_amount_paid",total_accu3);
                                 FirebaseDatabase.getInstance().getReference().child(path).updateChildren(result);
                             } else {
+                                //Section at First pay
 
                                 if (final_pay_from_sms >= rate) {
                                     double balance_at_first_pay = final_pay_from_sms - rate;
@@ -196,64 +210,122 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                             }
 
+                        }
 
-                            // At First Pay
-                            /*if (lpd=="n/a" && ed=="n/a"){
-                                if (final_pay_from_sms>=20){
-                                    double balance_at_first_pay = final_pay_from_sms - 20;
-                                    transaction.getRef().child("Last_pay_amount").setValue(final_pay_from_sms);
-                                    transaction.getRef().child("Last_pay_date").setValue(pay_date);
-                                    transaction.getRef().child("Expiry_date").setValue(expiry_date);
-                                    transaction.getRef().child("Balance_in_account").setValue(balance_at_first_pay);
-                                    transaction.getRef().child("Status").setValue("Active");
-                                    transaction.getRef().child("Total_amount_paid").setValue(total_amount_paid+=final_pay_from_sms);
-
-                                } else if (final_pay_from_sms< 20){
-                                    transaction.getRef().child("Last_pay_amount").setValue(final_pay_from_sms);
-                                    transaction.getRef().child("Last_pay_date").setValue(pay_date);
-                                    transaction.getRef().child("Expiry_date").setValue(expiry_date);
-                                    double d_balance_at_first_pay= Double.parseDouble(bal);
-                                    d_balance_at_first_pay+=final_pay_from_sms;
-                                    transaction.getRef().child("Balance_in_account").setValue(d_balance_at_first_pay);
-                                    transaction.getRef().child("Status").setValue("Active");
-                                    transaction.getRef().child("Total_amount_paid").setValue(total_amount_paid+=final_pay_from_sms);
-
-                                }
-                                //Before Expires
-                            } else if (lpd!="n/a" && ed!="n/a"){
-                                transaction.getRef().child("Last_pay_amount").setValue(final_pay_from_sms);
-                                transaction.getRef().child("Last_pay_date").setValue(pay_date);
-                                transaction.getRef().child("Expiry_date").setValue(expiry_date);
-                                double d_balance_before_expire= Double.parseDouble(bal);
-                                d_balance_before_expire+=final_pay_from_sms;
-                                transaction.getRef().child("Balance_in_account").setValue(d_balance_before_expire);
-                                transaction.getRef().child("").setValue("Active");
-                                transaction.getRef().child("Total_amount_paid").setValue(total_amount_paid+=final_pay_from_sms);
-
-                                //After Expires
-                            } else if (lpd!="n/a" && ed == "n/a"){
-                                //pay less than rate=20ghs
-
-                                if (final_pay_from_sms< 20){
-                                    transaction.getRef().child("Last_pay_amount").setValue(final_pay_from_sms);
-                                    transaction.getRef().child("Last_pay_date").setValue(pay_date);
-                                    transaction.getRef().child("Expiry_date").setValue(expiry_date);
-                                    double d_balance_after_expires= Double.parseDouble(bal);
-                                    d_balance_after_expires+=final_pay_from_sms;
-                                    transaction.getRef().child("Balance_in_account").setValue(d_balance_after_expires);
-                                    transaction.getRef().child("").setValue("Active");
-                                    transaction.getRef().child("Total_amount_paid").setValue(total_amount_paid+=final_pay_from_sms);
-
-                                } else
+                        }
+                }
 
 
 
-                            }*/
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            //Payment_history
+            // Accounting
+            Query queryon_paymenth = payment_histroty_table.orderByChild("Ref").equalTo(sms_data[index+1]);
+            queryon_paymenth.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()){
+                        for (DataSnapshot paymentH : dataSnapshot.getChildren() ){
+                            //Path Constructions
+                            String push_key= dataSnapshot.getChildren().iterator().next().getKey();
+                           String monthly_paid_path = "/"+dataSnapshot.getKey()+"/"+push_key+"/monthly_details/"+pay_month_year;
+                            String payment_details_path = "/"+dataSnapshot.getKey()+"/"+push_key+"/Payment_details/"+pay_date;
+
+                            //
+                            Double owe_rate = -20.00;
+                            String month_status = paymentH.child("monthly_details").child(pay_month_year).child("month_status").getValue(String.class);
+                            Double total_month_pay = paymentH.child("monthly_details").child(pay_month_year).child("Total_month_pay").getValue(Double.class);
+                            Double paid = paymentH.child("Payment_details").child(pay_date).child("Paid").getValue(Double.class);
+                            HashMap<String,Object> result ;
+
+                            //Write to payment_details child
+                            if (paid==null){
+                           result= new HashMap<>();
+                            result.put("Paid",final_pay_from_sms);
+                            result.put("Expiry_date",expiry_date);
+                            FirebaseDatabase.getInstance().getReference().child(payment_details_path).updateChildren(result);
+                            }else {
+                                result= new HashMap<>();
+                                result.put("Paid",paid+final_pay_from_sms);
+                                result.put("Expiry_date",expiry_date);
+                                FirebaseDatabase.getInstance().getReference().child(payment_details_path).updateChildren(result);
+                            }
+
+
+                            //Write to monthly_paid
+                            if (TextUtils.equals("new",month_status)){
+                                result= new HashMap<>();
+                                result.put("Total_month_pay",final_pay_from_sms);
+                                result.put("month_status","old");
+                                result.put("Total_month_owe",owe_rate);
+                                FirebaseDatabase.getInstance().getReference().child(monthly_paid_path).updateChildren(result);
+
+
+                            }else {
+                                result= new HashMap<>();
+                                result.put("Total_month_pay",total_month_pay+final_pay_from_sms);
+                                FirebaseDatabase.getInstance().getReference().child(monthly_paid_path).updateChildren(result);
+
+
+                            }
 
 
                         }
 
-                        }
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            T_report_table.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()){
+
+
+
+                            //Path Construction
+                            String t_report_path = "/"+dataSnapshot.getKey();
+
+                            //
+                           // double realtime_pay = trans_report
+
+
+                        double realtime_pay = dataSnapshot.child("Realtime_pay").getValue(double.class);
+                       
+                            HashMap<String,Object> result = new HashMap<>();
+
+
+                            result.put("Realtime_pay",realtime_pay+final_pay_from_sms);
+                            FirebaseDatabase.getInstance().getReference().child(t_report_path).updateChildren(result);
+
+
+                            //Add date of First transaction to T_report table
+                            if ((dataSnapshot.child("First_trans_date").getValue(String.class)==null)){
+                                T_report_table.child("First_trans_date").setValue(pay_date);
+                            }
+                            
+
+
+
+
+
+
+
+
+
+
+                    }
                 }
 
                 @Override
@@ -269,5 +341,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }catch (Exception e){
             e.printStackTrace();
         }
+
+
     }
 }
